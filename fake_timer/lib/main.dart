@@ -34,9 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _fakeTime = 0;
   int _currentTime = 0;
   bool _done = false;
-  TextEditingController _controllerActualTime = TextEditingController();
+  final TextEditingController _controllerActualTime = TextEditingController();
 
-  TextEditingController _controllerFakeTime = TextEditingController();
+  final TextEditingController _controllerFakeTime = TextEditingController();
   Timer? timer;
 
   @override
@@ -238,8 +238,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         child:
                             const Text("Start", style: TextStyle(fontSize: 32)),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 7,
+                      const SizedBox(
+                        width: 70,
                       ),
                       TextButton(
                         onPressed: stopTimer,
