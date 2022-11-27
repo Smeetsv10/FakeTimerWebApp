@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -212,8 +211,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         child:
                             const Text("Start", style: TextStyle(fontSize: 32)),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 7,
+                      const SizedBox(
+                        width: 50,
                       ),
                       TextButton(
                         onPressed: stopTimer,
