@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -95,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: Drawer(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -117,10 +118,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       }
                       _actualTime = int.parse(value);
                     }),
+                    onChanged: (value) => setState(() {
+                      if (value.isEmpty) {
+                        value = "0";
+                      }
+                      _actualTime = int.parse(value);
+                    }),
                     textInputAction: TextInputAction.next,
                     controller: _controllerActualTime,
                   ),
-                )
+                ),
               ],
             ),
             Wrap(
@@ -145,12 +152,32 @@ class _MyHomePageState extends State<MyHomePage> {
                       _fakeTime = int.parse(value);
                       _currentTime = _fakeTime;
                     }),
+                    onChanged: (value) => setState(() {
+                      if (value.isEmpty) {
+                        value = "0";
+                      }
+                      _fakeTime = int.parse(value);
+                      _currentTime = _fakeTime;
+                    }),
                     textInputAction: TextInputAction.done,
                     controller: _controllerFakeTime,
                   ),
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextButton(
+                  style: TextButton.styleFrom(backgroundColor: Colors.blue),
+                  onPressed: () {
+                    setState(() {});
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    "Save",
+                    style: TextStyle(color: Colors.black),
+                  )),
+            )
           ],
         ),
       ),
@@ -211,8 +238,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         child:
                             const Text("Start", style: TextStyle(fontSize: 32)),
                       ),
-                      const SizedBox(
-                        width: 50,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 7,
                       ),
                       TextButton(
                         onPressed: stopTimer,
